@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bevnet_challenge.api", "bevnet_challenge.api\bevnet_challenge.api.csproj", "{F559187F-1BDF-4D68-BFAC-893D86595371}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosting", "Hosting", "{C4A89400-4E30-4B17-853B-1985749101D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{729C0DD0-0DAB-41C0-9D5E-DA27621FB144}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{A46FEA52-693C-4888-8581-FB1D6632D22F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bevnet_challenge.api", "bevnet_challenge.api\bevnet_challenge.api.csproj", "{1070B7AA-13BC-4F6A-8C59-4E2DFE731D69}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bevnet_challenge.Application", "bevnet_challenge.Application\bevnet_challenge.Application.csproj", "{9058AAAB-6DD5-4768-AA03-143668C75F60}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bevnet_challenge.Infrastructure", "bevnet_challenge.Infrastructure\bevnet_challenge.Infrastructure.csproj", "{09B8A133-AA20-492C-AAED-8D4FC49F0C26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +21,28 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F559187F-1BDF-4D68-BFAC-893D86595371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F559187F-1BDF-4D68-BFAC-893D86595371}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F559187F-1BDF-4D68-BFAC-893D86595371}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F559187F-1BDF-4D68-BFAC-893D86595371}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1070B7AA-13BC-4F6A-8C59-4E2DFE731D69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1070B7AA-13BC-4F6A-8C59-4E2DFE731D69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1070B7AA-13BC-4F6A-8C59-4E2DFE731D69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1070B7AA-13BC-4F6A-8C59-4E2DFE731D69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9058AAAB-6DD5-4768-AA03-143668C75F60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9058AAAB-6DD5-4768-AA03-143668C75F60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9058AAAB-6DD5-4768-AA03-143668C75F60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9058AAAB-6DD5-4768-AA03-143668C75F60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09B8A133-AA20-492C-AAED-8D4FC49F0C26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09B8A133-AA20-492C-AAED-8D4FC49F0C26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09B8A133-AA20-492C-AAED-8D4FC49F0C26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09B8A133-AA20-492C-AAED-8D4FC49F0C26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1070B7AA-13BC-4F6A-8C59-4E2DFE731D69} = {C4A89400-4E30-4B17-853B-1985749101D2}
+		{9058AAAB-6DD5-4768-AA03-143668C75F60} = {729C0DD0-0DAB-41C0-9D5E-DA27621FB144}
+		{09B8A133-AA20-492C-AAED-8D4FC49F0C26} = {A46FEA52-693C-4888-8581-FB1D6632D22F}
+	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8913A7EF-A449-40C4-B43D-13744FB14632}
+		SolutionGuid = {AA8EA49F-3483-4959-BBB5-880C477F6A09}
 	EndGlobalSection
 EndGlobal

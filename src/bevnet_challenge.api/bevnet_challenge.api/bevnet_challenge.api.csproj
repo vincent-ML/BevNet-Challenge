@@ -10,4 +10,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\bevnet_challenge.Infrastructure\bevnet_challenge.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
