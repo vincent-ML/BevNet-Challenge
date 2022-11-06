@@ -1,3 +1,4 @@
+using bevnet_challenge.api.Middleware;
 using bevnet_challenge.Application;
 using bevnet_challenge.Infrastructure;
 
@@ -22,6 +23,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExceptionHandlerMiddleware>();
 
 app.UseHttpsRedirection();
 

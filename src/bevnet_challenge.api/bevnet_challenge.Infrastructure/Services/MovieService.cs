@@ -1,4 +1,5 @@
-﻿using bevnet_challenge.Application.Common.Interfaces;
+﻿using bevnet_challenge.Application.Common.Exceptions;
+using bevnet_challenge.Application.Common.Interfaces;
 using bevnet_challenge.Application.Common.Models;
 using bevnet_challenge.Infrastructure.Settings;
 using Newtonsoft.Json;
@@ -14,38 +15,34 @@ namespace bevnet_challenge.Infrastructure.Services
             _settings = settings;
         }
 
-        public async Task<PaginatedResponse<Movie>> GetMovies()
+        public async Task<PaginatedResponse<Movie>> GetMovies(PaginatedRequest paginatedRequest)
         {
-            if (string.IsNullOrEmpty(_settings.MovieApiUrl)) throw new ArgumentNullException(nameof(_settings.MovieApiUrl));
-
-            var movies = new PaginatedResponse<Movie>();
-
-            var httpResponse = await GetAsync(_settings.MovieApiUrl);
-            var responseText = await httpResponse.Content.ReadAsStringAsync();
-
-            if (httpResponse.IsSuccessStatusCode)
-            {
-                movies = JsonConvert.DeserializeObject<PaginatedResponse<Movie>>(responseText);
-            }
-
+            string dataQuery = $"page={paginatedRequest.PageNumber}";
+            var movies = await GetMoviesBase(dataQuery);
             return movies;
         }
 
-        public async Task<PaginatedResponse<Movie>> GetMoviesByTitle(string title)
+        public async Task<PaginatedResponse<Movie>> GetMoviesByTitle(string title, PaginatedRequest paginatedRequest)
+        {
+            string dataQuery = $"Title={title}&page={paginatedRequest.PageNumber}";
+            var movies = await GetMoviesBase(dataQuery);
+            return movies;
+        }
+
+        private async Task<PaginatedResponse<Movie>> GetMoviesBase(string queryParams)
         {
             if (string.IsNullOrEmpty(_settings.MovieApiUrl)) throw new ArgumentNullException(nameof(_settings.MovieApiUrl));
 
-            var movies = new PaginatedResponse<Movie>();
-
-            var httpResponse = await GetAsync($"{_settings.MovieApiUrl}?Title={title}");
+            var httpResponse = await GetAsync($"{_settings.MovieApiUrl}?{queryParams}");
             var responseText = await httpResponse.Content.ReadAsStringAsync();
 
             if (httpResponse.IsSuccessStatusCode)
             {
-                movies = JsonConvert.DeserializeObject<PaginatedResponse<Movie>>(responseText);
+                var movies = JsonConvert.DeserializeObject<PaginatedResponse<Movie>>(responseText);
+                return movies;
             }
 
-            return movies;
+            throw new AppException("Error searching your favorite movie", System.Net.HttpStatusCode.InternalServerError);
         }
     }
 }

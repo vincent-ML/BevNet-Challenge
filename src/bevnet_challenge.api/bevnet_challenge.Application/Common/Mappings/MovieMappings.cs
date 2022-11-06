@@ -20,16 +20,16 @@ namespace bevnet_challenge.Application.Common.Mappings
                 return dto;
             });
 
-            CreateMap<PaginatedResponse<Movie>, PaginatedResponseDto<MovieDto>>().ConvertUsing((entity, dto, cfg) =>
+            CreateMap<PaginatedResponse<Movie>, PaginatedResponse<MovieDto>>().ConvertUsing((entity, dto, cfg) =>
             {
                 if (entity == null) return null;
-                if (dto == null) dto = new PaginatedResponseDto<MovieDto>();
+                if (dto == null) dto = new PaginatedResponse<MovieDto>();
 
-                dto.Page = entity.page;
-                dto.PerPage = entity.per_page;
-                dto.Total = entity.total;
-                dto.TotalPages = entity.total_pages;
-                dto.Data = cfg.Mapper.Map<IEnumerable<MovieDto>>(entity.data);
+                dto.page = entity.page;
+                dto.per_page = entity.per_page;
+                dto.total = entity.total;
+                dto.total_pages = entity.total_pages;
+                dto.data = cfg.Mapper.Map<IEnumerable<MovieDto>>(entity.data);
 
                 return dto;
             });

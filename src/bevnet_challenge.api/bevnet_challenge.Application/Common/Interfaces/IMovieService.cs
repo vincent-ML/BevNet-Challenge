@@ -4,7 +4,7 @@ namespace bevnet_challenge.Application.Common.Interfaces
 {
     public interface IMovieService
     {
-        Task<PaginatedResponse<Movie>> GetMovies();
-        Task<PaginatedResponse<Movie>> GetMoviesByTitle(string title);
+        Task<PaginatedResponse<Movie>> GetMovies(PaginatedRequest paginatedRequest);
+        Task<PaginatedResponse<Movie>> GetMoviesByTitle(string title, PaginatedRequest paginatedRequest);
     }
 }

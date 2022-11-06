@@ -7,7 +7,7 @@ namespace bevnet_challenge.api.Controllers
     [ApiController]
     public class ApiControllerBase : ControllerBase
     {
-        private ISender _mediator;
-        protected ISender Mediator => _mediator ??= HttpContext.RequestServices.GetService<ISender>();
+        private ISender? _mediator;
+        protected ISender? Mediator => _mediator ??= HttpContext.RequestServices.GetService<ISender>();
     }
 }

@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
 using bevnet_challenge.Application.Common.Interfaces;
+using bevnet_challenge.Application.Common.Models;
 using bevnet_challenge.Application.UseCases.Movies.Dtos;
 using MediatR;
 
 namespace bevnet_challenge.Application.UseCases.Movies.GetMoviesByTitle
 {
-    public class GetMoviesByTitleRequestHandler : IRequestHandler<GetMoviesByTitleRequest, PaginatedResponseDto<MovieDto>>
+    public class GetMoviesByTitleRequestHandler : IRequestHandler<GetMoviesByTitleRequest, PaginatedResponse<MovieDto>>
     {
         private readonly IMovieService _movieService;
         private readonly IMapper _mapper;
@@ -16,10 +17,10 @@ namespace bevnet_challenge.Application.UseCases.Movies.GetMoviesByTitle
             _mapper = mapper;
         }
 
-        public async Task<PaginatedResponseDto<MovieDto>> Handle(GetMoviesByTitleRequest request, CancellationToken cancellationToken)
+        public async Task<PaginatedResponse<MovieDto>> Handle(GetMoviesByTitleRequest request, CancellationToken cancellationToken)
         {
-            var movies = await _movieService.GetMoviesByTitle(request.title);
-            var movieDtos = _mapper.Map<PaginatedResponseDto<MovieDto>>(movies);
+            var movies = await _movieService.GetMoviesByTitle(request.Title, request.PaginatedRequest);
+            var movieDtos = _mapper.Map<PaginatedResponse<MovieDto>>(movies);
             return movieDtos;
         }
     }
