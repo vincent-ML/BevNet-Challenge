@@ -504,6 +504,71 @@ const GlobalStyle = createGlobalStyle<{ theme: theme }>`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     padding: 3rem 10rem;
+
+    @media ${responsive.tabletPortrait} {
+      padding: 3rem 5rem;
+    }
+
+    @media ${responsive.phone} {
+      padding: 3rem 1rem;
+    }
+  }
+
+  .pagination {
+    color: ${(p) => p.theme.colors.lightGray};
+    font-family: ${(p) => p.theme.typography.sansSerif};
+    display: flex;
+    list-style: none;
+    font-size: 2rem;
+    font-weight: 700;
+    align-items: center;
+
+    li:not(.selected):not(.disabled) {
+      cursor: pointer;
+    }
+
+    li:not(:last-child) {
+      margin-right: 1rem;
+    }
+
+    .selected {
+      color: ${(p) => p.theme.colors.baseColor};
+      background-color: ${(p) => p.theme.colors.midGray};
+      padding: .3rem 1rem;
+      border-radius: 1rem;
+    }
+
+    .pagination__previous {
+      margin-right: 1.5rem;
+      padding: .7rem 2rem;
+      border-radius: 1rem;
+      background-color: ${(p) => p.theme.colors.midGray};
+    }
+
+    .pagination__previous.disabled {
+      background-color: ${(p) => p.theme.colors.darkGray};
+    }
+
+    .pagination__next {
+      margin-left: 1.5rem;
+      padding: .7rem 2rem;
+      border-radius: 1rem;
+      background-color: ${(p) => p.theme.colors.midGray};
+    }
+
+    .pagination__next.disabled {
+      background-color: ${(p) => p.theme.colors.darkGray};
+    }
+  }
+  .swal2-actions {
+    .swal2-styled.swal2-confirm {
+      border-radius: .3rem !important;
+      background-color: ${(p) => p.theme.colors.baseColor} !important;
+      color: ${(p) => p.theme.colors.mainWhite} !important;
+      font-family: ${(p) => p.theme.typography.sansSerif} !important;
+      font-size: 1.5rem !important;
+      font-weight: 700 !important;
+    }
   }
 `;
 

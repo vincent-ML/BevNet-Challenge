@@ -1,4 +1,5 @@
-﻿using bevnet_challenge.Application.Common.Models;
+﻿using bevnet_challenge.Application.Common.Exceptions;
+using bevnet_challenge.Application.Common.Models;
 using bevnet_challenge.Application.UseCases.Movies.Dtos;
 using bevnet_challenge.Application.UseCases.Movies.GetMovies;
 using bevnet_challenge.Application.UseCases.Movies.GetMoviesByTitle;
@@ -7,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace bevnet_challenge.api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class MoviesController : ApiControllerBase
     {
         /// <summary>
@@ -16,6 +17,7 @@ namespace bevnet_challenge.api.Controllers
         /// <returns><see cref="PaginatedResponseDto{MovieDto}"/></returns>
         [HttpGet]
         [ProducesResponseType(typeof(PaginatedResponse<MovieDto>), 200)]
+        [ResponseCache(Duration = 60, Location = ResponseCacheLocation.Any, VaryByQueryKeys = new string[] { "PageNumber" })]
         public async Task<IActionResult> GetMovies([FromQuery] PaginatedRequest paginatedRequest)
         {
             var getMovies = new GetMoviesRequest(paginatedRequest);
@@ -29,6 +31,7 @@ namespace bevnet_challenge.api.Controllers
         /// <returns><see cref="PaginatedResponseDto{MovieDto}"/></returns>
         [HttpGet("{title}")]
         [ProducesResponseType(typeof(PaginatedResponse<MovieDto>), 200)]
+        [ResponseCache(Duration = 60, Location = ResponseCacheLocation.Any, VaryByQueryKeys = new string[] { "title", "PageNumber" })]
         public async Task<IActionResult> GetMoviesByTitle(string title, [FromQuery] PaginatedRequest paginatedRequest)
         {
             var getMovies = new GetMoviesByTitleRequest(title, paginatedRequest);
