@@ -13,7 +13,7 @@
 
 ## Installation
 
-### Runing WEB APP
+### Running WEB APP
 
 The location of the web app is src\bevnet_challenge.webapp
 
