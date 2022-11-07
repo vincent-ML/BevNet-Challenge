@@ -29,7 +29,7 @@ Run the server:
 npm start
 ```
 
-### Runing API
+### Running API
 
 The location of the API solution is src\bevnet_challenge.api
 
